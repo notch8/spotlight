@@ -28,7 +28,7 @@ Capybara.register_driver :headless_chrome do |app|
                                  browser: :chrome,
                                  desired_capabilities: capabilities)
 end
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = ENV['CI'] ? 30 : 10
 
 if ENV['COVERAGE'] || ENV['CI']
   require 'simplecov'
